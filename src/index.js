@@ -84,7 +84,9 @@ const linkedList = () => {
     }
     return count;
   };
-  const head = () => {};
+  const head = () => {
+    return linkHead;
+  };
   const tail = () => {};
 
   const at = (index) => {};
@@ -92,7 +94,17 @@ const linkedList = () => {
     linkedList.pop();
   };
   const find = (value) => {};
-  const toString = () => {};
+  const toString = () => {
+    let temp = linkHead;
+    if (temp == null || temp == undefined) return `Linked list Empty`;
+    let output = "<HEAD> ";
+    while (temp.nextNode != null) {
+      output += `( ${temp.value} ) -> `;
+      temp = temp.nextNode;
+    }
+    output += `( ${temp.value} ) <TAIL> `;
+    return output;
+  };
   return { append, prepend, size, head, tail, at, pop, find, toString };
 };
 
@@ -105,3 +117,4 @@ const newLinkedList = linkedList();
 newLinkedList.append(node("jaja"));
 newLinkedList.append(node("hello"));
 console.log(newLinkedList.size());
+console.log(newLinkedList.toString());
