@@ -119,7 +119,25 @@ const linkedList = () => {
     }
     prev.nextNode = null;
   };
-  const find = (value) => {};
+  const find = (value) => {
+    let count = 0;
+    let temp = linkHead;
+    let found = false;
+    if (linkHead == null) return "List is empty";
+    while (temp.nextNode != null) {
+      if (temp.value === value) {
+        found = true;
+        break;
+      }
+      temp = temp.nextNode;
+      count++;
+    }
+    if (found) {
+      return count;
+    } else {
+      return "Couldn't find what you are looking for";
+    }
+  };
   const toString = () => {
     let temp = linkHead;
     if (temp == null || temp == undefined) return `Linked list Empty`;
@@ -143,8 +161,8 @@ const newLinkedList = linkedList();
 newLinkedList.append(node("jaja"));
 newLinkedList.append(node("hello"));
 newLinkedList.prepend(node("working?"));
-newLinkedList.pop();
-newLinkedList.pop();
 
 console.log(newLinkedList.size());
 console.log(newLinkedList.toString());
+console.log("");
+console.log(newLinkedList.find("working?"));
