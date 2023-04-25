@@ -54,59 +54,45 @@
 // console.log(mergeSort([4, 7, 2, 1, 7, 5, 4]));
 
 const linkedList = () => {
-  const linkedList = [];
+  let linkHead;
 
   const append = (value) => {
-    if (linkedList.length === 0) linkedList.push(value);
-    else {
-      linkedList.push(value);
-      linkedList[linkedList.length - 2].nextNode =
-        linkedList[linkedList.length - 1];
+    if (linkHead == null || linkHead == undefined) {
+      linkHead = value;
+    } else {
+      let temp = this.linkHead;
+      while (temp.nextNode != null) temp = temp.nextNode;
+      temp.nextNode = value;
     }
   };
   const prepend = (value) => {
-    linkedList.unshift(node(value));
-    linkedList[0].nextNode = linkedList[1];
+    if (linkHead == null) {
+      linkHead = value;
+    }
+    let temp = this.linkHead;
+    linkHead = value;
+    linkHead.nextNode = temp;
   };
   const size = () => {
-    return linkedList.length;
+    count = 0;
+    if (linkHead == null) return count;
+    count++;
+    temp = linkHead;
+    while (temp.nextNode != null) {
+      count++;
+      temp = temp.nextNode;
+    }
+    return count;
   };
-  const head = () => {
-    return linkedList[0];
-  };
-  const tail = () => {
-    return linkedList[linkedList.length - 1];
-  };
+  const head = () => {};
+  const tail = () => {};
 
-  const at = (index) => {
-    return linkedList[index];
-  };
+  const at = (index) => {};
   const pop = () => {
     linkedList.pop();
   };
-  const find = (value) => {
-    return linkedList.findIndex((n) => {
-      n.value === value;
-    });
-  };
-  const toString = () => {
-    let output = "";
-    // linkedList.forEach((n) => {
-    //   output += `( ${n.value} ) -> `;
-    //   if (n.nextNode == null) output += " ( null )";
-    // });
-
-    for (let i = 0; i < linkedList.length; i++) {
-      if (i === 0) {
-        output += `<HEAD> ( ${linkedList[i].value} ) -> ( ${linkedList[i].nextNode.value} ) -> `;
-      } else if (i === linkedList.length - 1) {
-        output += `( ${linkedList[i].nextNode} ) <Tail>`;
-      } else {
-        output += `( ${linkedList[i].nextNode.value} ) -> `;
-      }
-    }
-    return output;
-  };
+  const find = (value) => {};
+  const toString = () => {};
   return { append, prepend, size, head, tail, at, pop, find, toString };
 };
 
@@ -115,13 +101,6 @@ const node = (value) => {
 };
 
 const newLinkedList = linkedList();
-newLinkedList.append(node("jaja"));
-newLinkedList.append(node("hello"));
-newLinkedList.append(node("faraway"));
-console.log(newLinkedList.toString());
-console.log();
 
-// let ranks = ["jaja", 5, 7, 8, 10, 7];
-// let index = ranks.findIndex((rank) => rank === "7");
-// console.log(index);
-// console.log(ranks.findIndex((rank) => rank === "jaja"));
+//newLinkedList.append(node("jaja"));
+console.log(newLinkedList.size());
