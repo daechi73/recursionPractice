@@ -86,9 +86,13 @@ const linkedList = () => {
     return count;
   };
   const head = () => {
-    return linkHead;
+    return linkHead.value;
   };
-  const tail = () => {};
+  const tail = () => {
+    let temp = linkHead;
+    while (temp.nextNode != null) temp = temp.nextNode;
+    return temp.value;
+  };
 
   const at = (index) => {};
   const pop = () => {
@@ -120,3 +124,5 @@ newLinkedList.append(node("hello"));
 newLinkedList.prepend(node("working?"));
 console.log(newLinkedList.size());
 console.log(newLinkedList.toString());
+console.log(newLinkedList.head());
+console.log(newLinkedList.tail());
