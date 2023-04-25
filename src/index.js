@@ -94,9 +94,30 @@ const linkedList = () => {
     return temp.value;
   };
 
-  const at = (index) => {};
+  const at = (index) => {
+    let count = 0;
+    let temp = linkHead;
+    if (index < 0) {
+      return "negative index doesnt exist";
+    }
+    if (linkHead == null) return "The List is Empty";
+    while (count < index && temp.nextNode != null) {
+      temp = temp.nextNode;
+      count++;
+    }
+    if (count < index) {
+      return "Given index is past the list length";
+    }
+    return temp.value;
+  };
   const pop = () => {
-    linkedList.pop();
+    let temp = linkHead;
+    let prev;
+    while (temp.nextNode != null) {
+      prev = temp;
+      temp = temp.nextNode;
+    }
+    prev.nextNode = null;
   };
   const find = (value) => {};
   const toString = () => {
@@ -122,7 +143,8 @@ const newLinkedList = linkedList();
 newLinkedList.append(node("jaja"));
 newLinkedList.append(node("hello"));
 newLinkedList.prepend(node("working?"));
+newLinkedList.pop();
+newLinkedList.pop();
+
 console.log(newLinkedList.size());
 console.log(newLinkedList.toString());
-console.log(newLinkedList.head());
-console.log(newLinkedList.tail());
