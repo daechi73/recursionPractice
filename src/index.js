@@ -91,10 +91,20 @@ const linkedList = () => {
   };
   const toString = () => {
     let output = "";
-    linkedList.forEach((n) => {
-      output += `( ${n.value} ) -> `;
-      if (n.nextNode == null) output += " ( null )";
-    });
+    // linkedList.forEach((n) => {
+    //   output += `( ${n.value} ) -> `;
+    //   if (n.nextNode == null) output += " ( null )";
+    // });
+
+    for (let i = 0; i < linkedList.length; i++) {
+      if (i === 0) {
+        output += `<HEAD> ( ${linkedList[i].value} ) -> ( ${linkedList[i].nextNode.value} ) -> `;
+      } else if (i === linkedList.length - 1) {
+        output += `( ${linkedList[i].nextNode} ) <Tail>`;
+      } else {
+        output += `( ${linkedList[i].nextNode.value} ) -> `;
+      }
+    }
     return output;
   };
   return { append, prepend, size, head, tail, at, pop, find, toString };
@@ -109,6 +119,7 @@ newLinkedList.append(node("jaja"));
 newLinkedList.append(node("hello"));
 newLinkedList.append(node("faraway"));
 console.log(newLinkedList.toString());
+console.log();
 
 // let ranks = ["jaja", 5, 7, 8, 10, 7];
 // let index = ranks.findIndex((rank) => rank === "7");
