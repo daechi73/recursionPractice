@@ -60,7 +60,7 @@ const linkedList = () => {
     if (linkHead == null || linkHead == undefined) {
       linkHead = value;
     } else {
-      let temp = this.linkHead;
+      let temp = linkHead;
       while (temp.nextNode != null) temp = temp.nextNode;
       temp.nextNode = value;
     }
@@ -69,7 +69,7 @@ const linkedList = () => {
     if (linkHead == null) {
       linkHead = value;
     }
-    let temp = this.linkHead;
+    let temp = linkHead;
     linkHead = value;
     linkHead.nextNode = temp;
   };
@@ -102,5 +102,6 @@ const node = (value) => {
 
 const newLinkedList = linkedList();
 
-//newLinkedList.append(node("jaja"));
+newLinkedList.append(node("jaja"));
+newLinkedList.append(node("hello"));
 console.log(newLinkedList.size());
