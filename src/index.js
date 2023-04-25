@@ -68,6 +68,7 @@ const linkedList = () => {
   const prepend = (value) => {
     if (linkHead == null) {
       linkHead = value;
+      return;
     }
     let temp = linkHead;
     linkHead = value;
@@ -116,5 +117,6 @@ const newLinkedList = linkedList();
 
 newLinkedList.append(node("jaja"));
 newLinkedList.append(node("hello"));
+newLinkedList.prepend(node("working?"));
 console.log(newLinkedList.size());
 console.log(newLinkedList.toString());
